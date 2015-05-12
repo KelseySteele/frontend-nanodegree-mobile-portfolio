@@ -1,3 +1,4 @@
+PAGE SPEED
 I improved the index.html page score, so that the index.html page came back with a PageSpeed score above 90 with the following changes.
 
 1.	Minified the pizzeria image from 2.4 MB to 110KB using an online image optimizer.
@@ -6,6 +7,7 @@ I improved the index.html page score, so that the index.html page came back with
 4.	Added “async” to the Google analytics source and “print media” to the print style sheet.
 5.	Added script that linked to Google Fonts at the bottom of the HTML page, so that it loaded after the initial page load and during the idle time. 
 
+60 FPS
 In order to optimize the “Cam’s Pizzeria” webpage, I had to improve the pizza.html page so that it had a consistent frame rate at 60 fps when the user scrolled down the page. In order to achieve this rate, I added the following four changes.
 
 1.	Decreased the number of pizzas from 200 to 20. 
@@ -14,16 +16,25 @@ In order to optimize the “Cam’s Pizzeria” webpage, I had to improve the pi
 4.	Added “backface-visibility: hidden” to the “mover” class in the CSS file, so that the pizzas in the background had their own layer and the browser didn’t have to repaint the whole screen every time the user scrolled down the page. 
 5.	Created numRandomPizzas function to calculate the number of random pizzas based on the browser height and width. This function is called both when the page is initially loaded and when scrolling. 
 
+RESIZE PIZZA
 I decreased the resize pizza time from 5 ms to 0.84 ms with the following steps.
 
 1.	Deleted “determinedDx” function, so that the “changePizzaSizes” function does not have to calculate the change in pizza sizes. This calculation was pointless because there are only 3 set sizes. Now the browser only has to determine if the pizza is one of three set sizes. 
 2.	Removed the px to % conversion, since the pizzas’ width as a percentage is enough to determine the correct pizza size. 
 3.	Removed the scrollTop calculation from the for loop within the for loop within the “updatePosition” function (line 425). Created a new variable called moveTop (line 425) that calculated the scrollTop.
 
+PERSONALIZATION
 I also personalized Cam’s Pizzeria’s page to become Cam’s Compassionate Pizzeria:
-1.	Changed the slider pizza image to only show plant foods. 
-2.	Rewrote the ingredients, so that they only include plants. 
-3.	Changed the title and text of the page to reflect plant power. ☺ 
+1.	Rewrote the ingredients, so that they only include plants. 
+2.	Changed the title and text of the page to reflect plant power. ☺ 
+
+CHANGES FROM SUBMISSION THREE
+1. Minified pizzeriaMini to become pizzeriaThumbnail with a width of 100 pixels and then changed index.html to point to pizzeriaThumbnail. PageSpeed score is now 94 for desktop and 93 for mobile. 
+2. Added "use strict" in main.js to make the JavaScript more secure. This resulted in having to create a variable newWidth for the resize pizza function since newWidth was not declared as a variable in the original code. 
+3. Created pizzaDiv outside of the for loop. 
+4. Create child element image outside of for loop. 
+5. Changed querySelector("#movingPizzas1") to getElementById("movingPizzas1") in order to appendChild(elem).
+
 
 ## Website Performance Optimization portfolio project
 
