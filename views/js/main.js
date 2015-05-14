@@ -275,7 +275,7 @@ var makeRandomPizza = function() {
   var numberOfMeats = Math.floor((Math.random() * 4));
   var numberOfNonMeats = Math.floor((Math.random() * 3));
   var numberOfCheeses = Math.floor((Math.random() * 2));
-
+  
   for (var i = 0; i < numberOfMeats; i++) {
     pizza = pizza + ingredientItemizer(selectRandomMeat());
   }
@@ -311,7 +311,7 @@ var pizzaElementGenerator = function(i) {
   pizzaContainer.classList.add("randomPizzaContainer");
   pizzaContainer.style.width = "33.33%";
   pizzaContainer.style.height = "325px";
-  pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
+  pizzaContainer.id = "pizza" + i; // gives each pizza element a unique id
   pizzaImageContainer.classList.add("col-md-6");
 
   pizzaImage.src = "images/pizza.png";
@@ -373,7 +373,9 @@ var resizePizzas = function(size) {
           console.log("bug in sizeSwitcher");
       }  
       var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
-      for (var i = 0; i < randomPizzas.length; i ++) { //Deleted determineDx function & px to % conversion
+      var i; //moved declaration out of for loop.
+      var randomPizzasLength = randomPizzas.length; //moved declaration out of loop.
+      for (i = 0; i < randomPizzasLength; i ++) { //Deleted determineDx function & px to % conversion
         randomPizzas[i].style.width = newWidth + "%";
       }
   }
@@ -418,7 +420,8 @@ var frame = 0;
 function logAverageFrame(times) {   // times is the array of User Timing measurements from updatePositions()
   var numberOfEntries = times.length;
   var sum = 0;
-  for (var i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
+  var i; // moved declaration out of the for loop
+  for (i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
     sum = sum + times[i].duration;
   }
   console.log("Average time to generate last 10 frames: " + sum / 10 + "ms");
@@ -428,14 +431,18 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
+// When items and itemsLength are moved outside of the function per reviewer request, only one column of pizzas display and they do not move. 
+//var items = document.getElementsByClassName('mover'); // moved outside of the function, so it's only called when the page loads.
+//var itemsLength = items.length; //moved outside of function, so only calculated on page load.
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-
-  var moveTop = document.body.scrollTop / 1250; // take out of for loop because it only needs to be calculated once on every scroll.
+  var moveTop = document.body.scrollTop / 1250; 
   var phase;
-  var items = document.getElementsByClassName('mover');
-  for (var i = 0; i < items.length; i++) {
+  var i = 0;
+  var items = document.getElementsByClassName('mover'); // moved outside of the function, so it's only called when the page loads.
+  var itemsLength = items.length;
+  for (i = 0; i < itemsLength; i++) {
     phase = Math.sin(moveTop + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
@@ -456,10 +463,10 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  //take out of loop since it only needs to be created once.
-  var elem;
-  var numPizzas = numRandomPizzas();  //uses new function to calculate number of pizzas based on browser height and width.
-  for (var i = 0; i < numPizzas; i++) {
+  var elem; //take out of loop since it only needs to be created once.
+  var i; //moved declaration out of loop. 
+  var numPizzas = numRandomPizzas(); //uses new function to calculate number of pizzas based on browser height and width.
+  for (i = 0; i < numPizzas; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
