@@ -402,7 +402,7 @@ var pizzasDiv = document.getElementById("randomPizzas"); //Create pizzasDiv outs
 var numberPizzas = numRandomPizzas();
 for (var i = 2; i < numberPizzas; i++) {
   pizzasDiv.appendChild(pizzaElementGenerator(i));
-};
+}
 
 // User Timing API again. These measurements tell you how long it took to generate the initial pizzas
 window.performance.mark("mark_end_generating");
@@ -422,7 +422,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
     sum = sum + times[i].duration;
   }
   console.log("Average time to generate last 10 frames: " + sum / 10 + "ms");
-};
+}
 
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
@@ -433,9 +433,10 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var moveTop = document.body.scrollTop / 1250; // take out of for loop because it only needs to be calculated once on every scroll.
+  var phase;
   var items = document.getElementsByClassName('mover');
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin(moveTop + (i % 5));
+    phase = Math.sin(moveTop + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -446,7 +447,7 @@ function updatePositions() {
     var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
     logAverageFrame(timesToUpdatePosition);
   }
-};
+}
 
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
@@ -456,9 +457,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
   //take out of loop since it only needs to be created once.
+  var elem;
   var numPizzas = numRandomPizzas();  //uses new function to calculate number of pizzas based on browser height and width.
   for (var i = 0; i < numPizzas; i++) {
-    var elem = document.createElement('img');
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
