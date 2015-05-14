@@ -1,3 +1,9 @@
+INSTRUCTIONS FOR LAUNCHING THE PROJECT
+1. Open Cameron Pittman's portfolio through the index.html page.
+2. Click on "Cam's Pizzeria" project to open pizza.html. 
+3. Once on the pizza.html page, scroll down to the slider bar underneath "Our Pizzas".
+4. You can use the slider bar to change the size of the pizzas. 
+
 PAGE SPEED
 I improved the index.html page score, so that the index.html page came back with a PageSpeed score above 90 with the following changes.
 
