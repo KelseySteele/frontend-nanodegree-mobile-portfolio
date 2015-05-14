@@ -35,6 +35,11 @@ CHANGES FROM SUBMISSION THREE
 4. Create child element image outside of for loop. 
 5. Changed querySelector("#movingPizzas1") to getElementById("movingPizzas1") in order to appendChild(elem).
 
+CHANGES FROM SUBMISSION FOUR
+1. Submitted js file to jshint.com and from websites suggestions, removed two unnecessary semi-colons.
+2. Declared all variables outside of for loops.
+3. Had trouble with pushing images to GitHub. It could be that I needed to be in the project's main repository in order to push images onto GitHub. 
+
 
 ## Website Performance Optimization portfolio project
 
