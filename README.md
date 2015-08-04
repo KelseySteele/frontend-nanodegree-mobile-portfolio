@@ -31,8 +31,8 @@ I decreased the resize pizza time from 5 ms to 0.84 ms with the following steps.
 
 ###Personalization
 I also personalized Cam’s Pizzeria’s page to become Cam’s Compassionate Pizzeria:
-1.	Rewrote the ingredients, so that they only include plants. 
-2.	Changed the title and text of the page to reflect plant power. ☺ 
+* Rewrote the ingredients, so that they only include plants. 
+* Changed the title and text of the page to reflect plant power. ☺ 
 
 ###Changes from Submission Three
 1. Minified pizzeriaMini to become pizzeriaThumbnail with a width of 100 pixels and then changed index.html to point to pizzeriaThumbnail. PageSpeed score is now 94 for desktop and 93 for mobile. 
